@@ -1,5 +1,6 @@
 package game2048;
 
+import java.util.EventListener;
 import java.util.Formatter;
 import java.util.Observable;
 
@@ -138,6 +139,13 @@ public class Model extends Observable {
      * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
+        for(int i = 0; i < b.size(); i = i + 1){
+            for(int j = 0; j < b.size(); j = j + 1){
+                if(b.tile(i,j) == null){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -148,6 +156,15 @@ public class Model extends Observable {
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
+        for(int i = 0; i < b.size(); i = i+1){
+            for(int j = 0; j < b.size(); j = j+1){
+                if(b.tile(i, j) == null) {
+                    continue;
+                } else if (b.tile(i, j).value() == MAX_PIECE) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
