@@ -6,7 +6,7 @@ import java.util.Observable;
 
 
 /** The state of a game of 2048.
- *  @author TODO: YOUR NAME HERE
+ *  @author ZYYang
  */
 public class Model extends Observable {
     /** Current contents of the board. */
@@ -145,7 +145,7 @@ public class Model extends Observable {
                     return true;
                 }
             }
-        }
+        }0
         return false;
     }
 
@@ -176,6 +176,27 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        for (int i = 0; i < b.size(); i = i+1){
+            for (int j = 0; j < b.size(); j = j+1){
+                if (b.tile(i, j) == null) {
+                    return true;
+                }
+
+                if (i == b.size()-1 & j == b.size()-1) break;
+
+                if (i == b.size()-1){
+                    if (b.tile(i, j).value() == b.tile(i, j+1).value()) return true;
+                    continue;
+                }else if (j == b.size()-1) {
+                    if (b.tile(i, j).value() == b.tile(i+1, j).value()) return true;
+                    continue;
+                }
+
+                if (b.tile(i, j).value() == b.tile(i+1, j).value() |
+                    b.tile(i, j).value() == b.tile(i, j+1).value())
+                    return true;
+            }
+        }
         return false;
     }
 
